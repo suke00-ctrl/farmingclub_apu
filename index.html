@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farming Club APU | Seed to Mouth</title>
+    <style>
+        :root {
+            --primary-green: #1A5D1A; /* Matches logo vibe */
+            --secondary-green: #4C8435;
+            --accent-gold: #F4D03F;
+            --bg-light: #F9FCF9;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-green);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 60px; 
+            border-radius: 50%; /* Circular logo style */
+            background: white;
+            padding: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); /* Placeholder Farm Image */
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #eac100;
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .section {
+            padding: 4rem 10%;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 3px;
+            background: var(--accent-gold);
+            margin: 10px auto 0;
+        }
+
+        .vision-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        /* Event Section */
+        .event-section {
+            background-color: #E8F5E9;
+        }
+
+        .event-card {
+            display: flex;
+            flex-wrap: wrap;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .event-img {
+            flex: 1;
+            min-width: 300px;
+            background: url('https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); /* Placeholder Pottery Image */
+            background-size: cover;
+            background-position: center;
+            min-height: 300px;
+            position: relative;
+        }
+
+        /* Overlay for ring-pull image if needed */
+        .ring-pull-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-gold);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .event-details {
+            flex: 1;
+            padding: 2.5rem;
+            min-width: 300px;
+        }
+
+        .event-details h3 {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-meta {
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .event-info-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .event-info-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .event-info-list li strong {
+            margin-right: 10px;
+            color: var(--primary-green);
+        }
+
+        /* Membership Section */
+        .membership {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        
+        .membership h2 {
+            color: white;
+        }
+
+        .price-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid var(--accent-gold);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #aaa;
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .apu-logo {
+            height: 40px; /* Small APU logo as requested */
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { display: none; } /* Simple hide for this demo */
+            .event-card { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="farming_club_logo_placeholder.jpg" alt="Farming Club Logo" class="logo-img" id="fc-logo">
+            <span style="color:white; font-weight:bold; font-size:1.2rem;">Farming Club APU</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="https://www.instagram.com/apu_farmingclub" target="_blank">Instagram</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>From Seed to Mouth</h1>
+        <p>Explore the food supply journey and build a food-independent agricultural community at APU.</p>
+        <a href="#events" class="btn btn-primary">Join Next Event</a>
+    </section>
+
+    <section id="about" class="section">
+        <h2>Our Vision</h2>
+        <div class="vision-card">
+            <p style="font-size: 1.1rem;">
+                "To explore the entire food supply STM (Seed To Mouth) process, from vegetable seed to the consumer's mouth, with the aim of building a food-independent agricultural community."
+            </p>
+            <br>
+            <p style="font-size: 0.9rem; color: #666;">
+                We operate with a decentralized structure where every member takes initiative. Whether you are into gardening, marketing, or logistics, there is a place for you to grow.
+            </p>
+        </div>
+    </section>
+
+    <section id="events" class="section event-section">
+        <h2>Upcoming Event</h2>
+        <div class="event-card">
+            <div class="event-img">
+                <div class="ring-pull-badge">Discount Available!</div>
+            </div>
+            <div class="event-details">
+                <h3>UPCYCLE CLAY DAY</h3>
+                <span class="event-meta">Wednesday, 10th Dec 2025</span>
+                
+                <p>Make your own clay keychains! Learn about sustainability by reusing ring-pulls creatively. Perfect for a unique Christmas gift.</p>
+                
+                <ul class="event-info-list">
+                    <li><strong>📍 Location:</strong> APU Campus (Room TBA)</li>
+                    <li><strong>⏰ Time:</strong> 4:00 PM - 7:00 PM (Come anytime!)</li>
+                    <li><strong>💰 Fee:</strong> RM 10</li>
+                    <li><strong>💡 Discount:</strong> Bring a Ring-Pull to get RM1 OFF!</li>
+                </ul>
+
+                <a href="YOUR_GOOGLE_FORM_LINK_HERE" class="btn btn-primary" style="width:100%; text-align:center;">Register Now</a>
+                <p style="font-size:0.8rem; margin-top:10px; color:#666;">*Air-dry clay used (no oven needed). Logistics provided.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="membership" class="section membership">
+        <h2>Join the Club</h2>
+        <p style="margin-bottom: 2rem;">Become a part of the sustainable movement at APU.</p>
+        
+        <div class="price-card">
+            <h3>Monthly Membership</h3>
+            <div class="price">RM 10</div>
+            <p style="margin: 1rem 0;">Supports event logistics, farm maintenance, and community activities.</p>
+            <a href="YOUR_PAYMENT_FORM_LINK_HERE" class="btn btn-primary" style="background:white; color:var(--primary-green);">Join & Pay</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logos">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Asia_Pacific_University_of_Technology_%26_Innovation_%28APU%29_logo.svg/2560px-Asia_Pacific_University_of_Technology_%26_Innovation_%28APU%29_logo.svg.png" alt="APU Logo" class="apu-logo">
+        </div>
+        <p>&copy; 2025 Farming Club APU. All rights reserved.</p>
+        <p style="font-size: 0.8rem; margin-top:10px;">Empowering students through agriculture and independence.</p>
+    </footer>
+
+    <script>
+        // Simple script to handle smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Dynamic Image Loader for Logo (User needs to place file in same folder)
+        document.getElementById('fc-logo').src = "Farming Club Logo.jpg"; 
+    </script>
+</body>
+</html>
